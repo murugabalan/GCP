@@ -1,0 +1,29 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '2.7.7'
+	id 'io.spring.dependency-management' version '1.1.4'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '11'
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation platform('com.google.cloud:libraries-bom:26.33.0')
+	implementation 'com.google.cloud:google-cloud-storage'
+	implementation 'org.springframework.cloud:spring-cloud-starter-bootstrap:3.1.4'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation 'com.google.cloud:google-cloud-bigquery'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}

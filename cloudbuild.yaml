@@ -1,0 +1,11 @@
+# To store the image in Artifact Registry as part of your build flow:
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'us-docker.pkg.dev/muthu-training-2024/gcp-training-repo/bqcrudoperation', '.']
+  id: image-build
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'us-docker.pkg.dev/muthu-training-2024/gcp-training-repo/bqcrudoperation']
+  id: image-push
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: ['run', 'deploy','bqcrudoperation','--image', 'us-docker.pkg.dev/muthu-training-2024/gcp-training-repo/bqcrudoperation','--region','us-central1']
+  id: image-deploy
