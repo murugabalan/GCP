@@ -1,0 +1,35 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '2.7.7'
+	id 'io.spring.dependency-management' version '1.1.4'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '11'
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation platform('com.google.cloud:libraries-bom:26.33.0')
+	implementation 'com.google.cloud:google-cloud-storage'
+	implementation 'org.springframework.cloud:spring-cloud-starter-bootstrap:3.1.4'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation group: 'net.minidev', name: 'json-smart', version: '2.5.0'
+	implementation 'com.google.cloud:spring-cloud-gcp-starter-secretmanager:3.7.9'
+	implementation 'org.postgresql:postgresql'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'io.springfox:springfox-boot-starter:3.0.0'
+	implementation 'video.bug:unlogged-sdk:0.1.36'
+	annotationProcessor 'video.bug:unlogged-sdk:0.1.36'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
